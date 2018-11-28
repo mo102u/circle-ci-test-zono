@@ -2,7 +2,7 @@ version: 2
 jobs:
   deploy-job:
     docker:
-      - image: circleci/php:7.1-browsers
+      - image: centos:7
     steps:
       - checkout
       - add_ssh_keys:
