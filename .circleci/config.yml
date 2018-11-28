@@ -1,8 +1,11 @@
 version: 2
 jobs:
+#  build:
+#    docker:
+#      - image: centos:7
   deploy-job:
     docker:
-      - image: circleci/php:5.6.38-apache-jessie
+      - image: circleci/php:5.6.32-apache-jessie
     steps:
       - checkout
       - add_ssh_keys:
