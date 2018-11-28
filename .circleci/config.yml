@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  deploy-job:
+    docker:
+      - image: centos:7
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "2d:87:63:05:f2:99:a5:cb:ff:a7:c9:73:a7:43:8d:39"
+      - run: echo "User ec2-user" >> $HOME/.ssh/config
+      - run: echo "ForwardAgent yes" >> $HOME/.ssh/config
+      - run: yum -y install php-pear php-devel
+      - run: curl -LO https://deployer.org/releases/v4.3.1/deployer.phar
+      - run: mv deployer.phar dep
+      - run: chmod +x ./dep
+      - run: ./dep deploy staging
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy-job:
+          filters:
+            branches:
+              only: master
