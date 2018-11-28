@@ -10,6 +10,7 @@ jobs:
             - "2d:87:63:05:f2:99:a5:cb:ff:a7:c9:73:a7:43:8d:39"
       - run: echo "User ec2-user" >> $HOME/.ssh/config
       - run: echo "ForwardAgent yes" >> $HOME/.ssh/config
+      - run: composer install
       - run: yum -y install php-pear php-devel
       - run: curl -LO https://deployer.org/releases/v4.3.1/deployer.phar
       - run: mv deployer.phar dep
