@@ -14,7 +14,7 @@ jobs:
       - run: curl -LO https://deployer.org/releases/v4.3.1/deployer.phar
       - run: mv deployer.phar dep
       - run: chmod +x ./dep
-      - run: ./dep deploy staging
+      - run: ./dep deploy ci-test
 workflows:
   version: 2
   deploy:
